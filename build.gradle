@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+task runUnitTests(type: Test) {
+    dependsOn clean, compileTestJava
+    useTestNG() {
+        useDefaultListeners = false
+        listeners << 'org.uncommons.reportng.HTMLReporter'
+        listeners << 'org.uncommons.reportng.JUnitXMLReporter'
+        outputDirectory = file("$buildDir/RunTests")
+        includeGroups System.getProperty('tag', 'SMOKE')
+    }
+    testLogging.showStandardStreams = true
+}
+
+task cucumberTests(type: Test) {
+    include '**/Runner*'
+}
+
+dependencies {
+    testCompile(group: 'org.uncommons', name: 'reportng', version: '1.1.4')
+    compile group: 'org.testng', name: 'testng', version: '6.14.3'
+    compile group: 'commons-validator', name: 'commons-validator', version: '1.4.0'
+    compile group: 'com.google.inject', name: 'guice', version: '3.0'
+    compile 'io.rest-assured:rest-assured:4.2.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.10.1'
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    testImplementation 'io.cucumber:cucumber-java:6.8.1'
+    testImplementation 'io.cucumber:cucumber-junit:6.8.1'
+    implementation 'junit:junit:4.12'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+
