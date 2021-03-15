@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="5" time="6.059">
-<testcase classname="Latest foreign exchange rates end to end scenarios" name="Verify Rates API response status for Latest Foreign Exchange Rates" time="2.468">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="5" time="6.757">
+<testcase classname="Latest foreign exchange rates end to end scenarios" name="Verify Rates API response status for Latest Foreign Exchange Rates" time="2.811">
 <system-out><![CDATA[Given rates API is available................................................passed
 When user calls rates API for latest foreign exchange rate..................passed
 Then the response status for latest foreign exchange rates should be 200....passed
 ]]></system-out>
 </testcase>
-<testcase classname="Latest foreign exchange rates end to end scenarios" name="Verify Rates API response details for Latest Foreign Exchange Rates" time="0.824">
+<testcase classname="Latest foreign exchange rates end to end scenarios" name="Verify Rates API response details for Latest Foreign Exchange Rates" time="0.905">
 <system-out><![CDATA[Given rates API is available................................................passed
 When user calls rates API for latest foreign exchange rate for USD symbol...passed
 Then the response for latest rates for USD should match.....................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Latest foreign exchange rates end to end scenarios" name="Verify error for invalid rates API URL" time="0.933">
+<testcase classname="Latest foreign exchange rates end to end scenarios" name="Verify error for invalid rates API URL" time="0.905">
 <system-out><![CDATA[Given rates API is available................................................passed
 When user hits an invalid URL...............................................passed
 Then user should get error message..........................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Specific date foreign exchange rates end to end scenarios" name="Verify response status" time="0.862">
+<testcase classname="Specific date foreign exchange rates end to end scenarios" name="Verify response status" time="0.872">
 <system-out><![CDATA[Given specific date rates API is available..................................passed
 When user calls rates API for specific date.................................passed
 Then specific date rates response status should be 200......................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Specific date foreign exchange rates end to end scenarios" name="Verify rates API base response details" time="0.808">
+<testcase classname="Specific date foreign exchange rates end to end scenarios" name="Verify rates API base response details" time="0.949">
 <system-out><![CDATA[Given specific date rates API is available..................................passed
 When user calls rates API for specific date for GBP symbol..................passed
 Then the response for specific date for GBP should match....................passed
