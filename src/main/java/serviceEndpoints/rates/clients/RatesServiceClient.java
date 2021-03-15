@@ -23,8 +23,7 @@ public class RatesServiceClient extends BaseClient {
     public GetRatesResponse getRatesError() {
         String invalidurl = String.format("%s/", BaseUrlConfig.getRateAPIHost());
 
-        RequestSpecification requestSpecification = given()
-                .contentType(ContentType.JSON);
+        RequestSpecification requestSpecification = given();
         Response response = get(invalidurl, requestSpecification);
         GetRatesResponse getRatesResponse = response.as(GetRatesResponse.class);
         getRatesResponse.setHttpStatusCode(response.statusCode());

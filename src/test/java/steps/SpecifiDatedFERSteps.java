@@ -2,6 +2,7 @@ package steps;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import serviceEndpoints.rates.clients.RatesServiceClient;
 import serviceEndpoints.rates.response.GetRatesResponse;
@@ -19,20 +20,29 @@ public class SpecifiDatedFERSteps {
         specificDateClient = new RatesServiceClient();
     }
 
-    @Then("^specific date rates response status should be (\\d+)$")
-    public void verifySpecificDateRateStatus(Integer status) {
-        getSpecificDateResponse = specificDateClient.getRates(date);
-        Assert.assertEquals(getSpecificDateResponse.getHttpStatusCode(), status.intValue());
+    @Then("^specific date rates response status should be 200$")
+    public void verifySpecificDateRateStatus() {
+        Assert.assertEquals(getSpecificDateResponse.getHttpStatusCode(), HttpStatus.SC_OK);
     }
 
-    @Then("the response for specific date for (\\w+) should match$")
-    public void theResponseForSpecificDateForGBPShouldMatch(String symbol) {
-        getSpecificDateResponse = specificDateClient.getRatesForSymbols(date, symbol);
+    @Then("the response for specific date for GBP should match$")
+    public void theResponseForSpecificDateForGBPShouldMatch() {
         assertThat(getSpecificDateResponse.getBase(), is(equalTo("EUR")));
+        assertThat(getSpecificDateResponse.getRates().getGBP(), is(instanceOf(String.class)));
     }
 
     @When("user hits a future date rates API")
     public void userHitsAFutureDateRatesAPI() {
         getSpecificDateResponse = specificDateClient.getRates(date);
+    }
+
+    @When("user calls rates API for specific date")
+    public void userCallsRatesAPIForSpecificDate() {
+        getSpecificDateResponse = specificDateClient.getRates(date);
+    }
+
+    @When("user calls rates API for specific date for GBP symbol")
+    public void userCallsRatesAPIForSpecificDateForGBPSymbol(String symbol) {
+        getSpecificDateResponse = specificDateClient.getRatesForSymbols(date, symbol);
     }
 }

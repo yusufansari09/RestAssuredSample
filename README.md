@@ -10,11 +10,11 @@ API test automation framework created with Java and Rest Assured using Cucumber.
 # Usage
 * Please run below command to execute the Unit tests:
 ```$xslt
-gradle clean runUnitTests -Dtag=SMOKE
+./gradlew clean runUnitTests -Dtag=SMOKE
 ```
 * Please run below command to execute cucumber features
 ```$xslt
-gradle cucumberTests
+./gradlew cucumberTests
 ```
 
 * The request sent, the endpoint and the response returned, all are getting logged to the Reports as well as on the standard output.
