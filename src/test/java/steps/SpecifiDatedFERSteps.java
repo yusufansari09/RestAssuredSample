@@ -41,7 +41,7 @@ public class SpecifiDatedFERSteps {
         getSpecificDateResponse = specificDateClient.getRates(date);
     }
 
-    @When("user calls rates API for specific date for GBP symbol")
+    @When("user calls rates API for specific date for (\\w+) symbol$")
     public void userCallsRatesAPIForSpecificDateForGBPSymbol(String symbol) {
         getSpecificDateResponse = specificDateClient.getRatesForSymbols(date, symbol);
     }

@@ -16,6 +16,14 @@ API test automation framework created with Java and Rest Assured using Cucumber.
 ```$xslt
 ./gradlew cucumberTests
 ```
+OR
+```$xslt
+./gradlew -Dcucumber.options="--tags @Smoke" clean test
+```
+OR
+```$xslt
+./gradlew -Dcucumber.options="--tags @Regression" clean test
+```
 
 * The request sent, the endpoint and the response returned, all are getting logged to the Reports as well as on the standard output.
 
