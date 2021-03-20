@@ -23,12 +23,14 @@ task runUnitTests(type: Test) {
     testLogging.showStandardStreams = true
 }
 
-task cucumberTests(type: Test)
-test
-{
-    systemProperty "cucumber.options", System.getProperty("cucumber.options")
-    include '**/Runner*'
+task cucumberTests(type: Test) {
+    test
+            {
+                systemProperty "cucumber.options", System.getProperty("cucumber.options")
+                include '**/Runner*'
+            }
 }
+
 
 dependencies {
     testCompile(group: 'org.uncommons', name: 'reportng', version: '1.1.4')
